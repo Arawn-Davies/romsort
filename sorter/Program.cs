@@ -3,7 +3,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Reflection.PortableExecutable;
 
-namespace sorter
+namespace romsort
 {
     internal class Program
     {
@@ -58,10 +58,8 @@ namespace sorter
 
 
 
-            /*int */
-            i = 0;
-            /*List<string> */
-            files = Directory.GetFiles(src).ToList();
+            /*int*/ i = 0;
+            /*List<string>*/ files = Directory.GetFiles(src).ToList();
 
             // Them we move the directories that may have been created into their alphabetic counterparts.
             // These are taken from first letter of the directory name.
