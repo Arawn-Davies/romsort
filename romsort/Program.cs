@@ -7,7 +7,7 @@ namespace romsort
 {
     internal class Program
     {
-        private static string src = "U:\\Gaming\\Consoles\\Amstrad\\cpc6128\\dsk\\ZIPs\\";
+        private readonly static string src = "U:\\Gaming\\Consoles\\Amstrad\\cpc6128\\dsk\\ZIPs\\";
 
         private static List<string>? files;
 
@@ -53,7 +53,7 @@ namespace romsort
                 //Console.Write("File op " + i + " out of " + files.Length);
                 string file = Path.GetFileName(s);
 
-                Console.WriteLine(i + " out of " + files.Count() + ":\t\tExtracting " + file + " and moving to " + src + "\\ZIPs\\" + file);
+                Console.WriteLine(i + " out of " + files.Count + ":\t\tExtracting " + file + " and moving to " + src + "\\ZIPs\\" + file);
                 ZipFile.ExtractToDirectory(s, src, true);
                 File.Move(s, src + "\\ZIPs\\" + file);
                 i++;
@@ -130,8 +130,13 @@ namespace romsort
             }
         }
 
-        static void Main(string[] args)
+        static void Main(string? arg)
         {
+            if (!Directory.Exists(arg) || !Directory.Exists(src))
+            {
+                Console.WriteLine(@"Directory \"" + src+ \"" does not exist. Please use a valid directory");
+                Environment.Exit(1);
+            }
             // Set initial counter
             int i = 1;
 
